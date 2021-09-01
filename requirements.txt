@@ -1,0 +1,8 @@
+# Function dependencies, for example:
+# package>=version
+
+firebase-admin==5.0.1
+tweepy==3.10.0
+tensorflow
+transformers
+datetime

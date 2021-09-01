@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Chainlink Sentiment Analysis</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="static/css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    
+</head>
+<body>
+    <h1 class="ui header">Chainlink Sentiment Analysis</h1>
+    <select name="forma" onchange="location = this.value;">
+        <option value="" selected>{{token_name}}</option>
+        <option value="bitcoin.html">Bitcoin</option>
+        <option value="cardano.html">Cardano</option>
+        <option value="chainlink.html">Chainlink</option>
+        <option value="ethereum.html">Ethereum</option>
+        <option value="polkadot.html">Polkadot</option>
+        <option value="uniswap.html">Uniswap</option>
+        
+    </select>
+        
+    <div class = "ui message">
+        <div class = 'header'>
+            Daily Sentiment: {{data['sentiment']}}
+            {% if color == "red" %}
+            <div style="color: red;">Daily Change: {{percent}}%</div>
+            {% elif color == "green" %}
+            <div style="color: green;">Daily Change: {{percent}}%</div>
+            {% else %}
+            <div>Daily Change: {{percent}}%</div>
+            {%endif%}
+        </div>
+    </div>
+    
+    <div class="chartscontainer">
+        <iframe width="600" height="530" frameborder="0" scrolling="no" src="{{ urls[0] }}"></iframe>
+        <iframe width="600" height="530" frameborder="0" scrolling="no" src="{{ urls[1] }}"></iframe>
+    </div>
+
+    <table class="ui celled table">
+        <caption>Recent Tweets</caption>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Text</th>
+                <th>Time Created</th>
+                <th>User</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tweet in data['tweets'] %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{tweet['full-text']}}</td>
+                <td width=200px>{{tweet['created-at']}}</td>
+                <td>{{tweet['username']}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    
+</body>
+</html>
