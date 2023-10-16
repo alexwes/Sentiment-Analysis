@@ -8,7 +8,7 @@ from tweepy.models import SavedSearch
 from twitter_handler import TwitterClient
 from firestore_handler import FirestoreHandler 
 
-app = FastAPI() 
+app = FastAPI()
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")

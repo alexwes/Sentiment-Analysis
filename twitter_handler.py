@@ -1,4 +1,4 @@
-from tweepy import OAuthHandler, API
+from tweepy import OAuthHandler, API 
 
 import twitter_credentials as tc
 import numpy as np

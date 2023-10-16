@@ -11,7 +11,7 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import chart_studio.plotly as py
 
- 
+
 def add_indicators():
     fire = FirestoreHandler()
     tickers = ["ETHUSD", "BTCUSD", "ADAUSD", "UNIUSD","LINKUSD","DOTUSD"]
